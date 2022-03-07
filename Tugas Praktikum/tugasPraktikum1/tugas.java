@@ -58,8 +58,8 @@ public class tugas {
     
     // Pembuatan Array kategori, Buku, Penulis
     public static c_Kategori kategori[] = new c_Kategori[3];
-    public static c_Buku buku[] = new c_Buku[3];
-    public static c_Penulis penulis[] = new c_Penulis[3];
+    public static c_Buku buku[] = new c_Buku[6];
+    public static c_Penulis penulis[] = new c_Penulis[6];
 
     public static void main(String[] args) {
         int pilih;
@@ -100,10 +100,17 @@ public class tugas {
                 
                 System.out.print("Masukan penulis ke-1 : ");
                 String penulis1 = input.nextLine();
-                System.out.print("Masukan penulis ke-2 : ");
-                String penulis2 = input.nextLine();
-                penulis[x] = new c_Penulis(penulis1, penulis2);
-                
+
+                System.out.println("Apakah penulis hanya ada 1? (Y/N)");
+                String penulis2;
+                String pilihan = input.nextLine();
+                if (pilihan.equalsIgnoreCase("Y")){
+                    penulis2 = null;    
+                } else {
+                    System.out.print("Masukan penulis ke-2 : ");
+                    penulis2 = input.nextLine();
+                }
+                penulis[x] = new c_Penulis(penulis1, penulis2);            
                 x += 1;
             }
         }          
