@@ -18,47 +18,41 @@ class c_Kategori{
 class c_Buku{
     private String namaBuku;
     private String sinopsis;
+    private String namaPenulis1;
+    private String namaPenulis2;
 
-    // Buku
-    c_Buku (String nama, String sinopsis){
+    c_Buku (String nama, String sinopsis, String penulis1, String penulis2){
         this.namaBuku = nama;
         this.sinopsis = sinopsis;
+        this.namaPenulis1 = penulis1;
+        this.namaPenulis2 = penulis2;
     }
+    // nama buku
     String getNamaB(){
         return this.namaBuku;
     }
+    // sinopsis
     String getSinopsis(){
         return this.sinopsis;
     }
     int getSinopsisLength(){
         return sinopsis.length();
     }
-}
-
-class c_Penulis{
-    private String namaPenulis1;
-    private String namaPenulis2;
-
-    c_Penulis (String penulis1, String penulis2){
-        this.namaPenulis1 = penulis1;
-        this.namaPenulis2 = penulis2;
-    }
-
+    // penulis 1 dan 2
     String getNamaP1(){
         return this.namaPenulis1;
     }
-
     String getNamaP2(){
         return this.namaPenulis2;
     }
 }
+
 public class tugas {
     public static Scanner input = new Scanner(System.in);
     
-    // Pembuatan Array kategori, Buku, Penulis
+    // Pembuatan Array Kategori dan Buku
     public static c_Kategori kategori[] = new c_Kategori[3];
     public static c_Buku buku[] = new c_Buku[6];
-    public static c_Penulis penulis[] = new c_Penulis[6];
 
     public static void main(String[] args) {
         int pilih;
@@ -95,11 +89,8 @@ public class tugas {
                 String nama = input.nextLine();
                 System.out.print("Masukan sinopsis buku ke-" + (j + 1) + " : ");
                 String sinopsis = input.nextLine();
-                buku[x] = new c_Buku(nama, sinopsis);
-                
                 System.out.print("Masukan penulis ke-1 : ");
                 String penulis1 = input.nextLine();
-
                 System.out.println("Apakah penulis hanya ada 1? (Y/N)");
                 String penulis2;
                 String pilihan = input.nextLine();
@@ -108,8 +99,8 @@ public class tugas {
                 } else {
                     System.out.print("Masukan penulis ke-2 : ");
                     penulis2 = input.nextLine();
-                }
-                penulis[x] = new c_Penulis(penulis1, penulis2);            
+                }          
+                buku[x] = new c_Buku(nama, sinopsis, penulis1, penulis2);
                 x += 1;
             }
         }          
@@ -125,8 +116,8 @@ public class tugas {
                 System.out.println("Buku ke-" + (j + 1) + " untuk kategori tersebut adalah" + buku[x].getNamaB());
                 System.out.println("Sinopsis : " + buku[x].getSinopsis()); 
                 System.out.println("Panjang perhuruf Sinopsis : " + buku[x].getSinopsisLength());
-                System.out.println("Penulis ke 1 untuk buku tersebut adalah : " + penulis[x].getNamaP1());
-                System.out.println("Penulis ke 2 untuk buku tersebut adalah : " + penulis[x].getNamaP2());   
+                System.out.println("Penulis ke 1 untuk buku tersebut adalah : " + buku[x].getNamaP1());
+                System.out.println("Penulis ke 2 untuk buku tersebut adalah : " + buku[x].getNamaP2());   
                 x += 1;
             }
             
