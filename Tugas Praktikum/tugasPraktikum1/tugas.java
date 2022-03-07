@@ -7,15 +7,8 @@ class Buku{
     String penulis;
     String sinopsis;
 
-    Buku(String kategori){
+    void kategori (String kategori){
         this.kategori = kategori;
-    }
-
-    void display(){
-        System.out.println("Kategori                        : " + this.kategori
-                        +"\nBuku untuk kategori tersebut    : " + this.namaBuku
-                        +"\nSinopsis                        : " + this.sinopsis
-                        +"\nPenulis                         : " + this.penulis);
     }
 
 
@@ -24,16 +17,20 @@ class Buku{
 class tugas{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        String kategori = input.next();
 
-        for (int i = 0; i < 3; i++){
-            System.out.println("Memasukan nama kategori ");
-            kategori = input.next();
+        Buku[]buku = new Buku[3];
+        for (int i = 0;i < buku.length;i++){
+            buku[i] = new Buku();
         }
-
-
-        Buku buku1 = new Buku (kategori);
-        buku1.display();
+        
+        int masukan;
+        do {
+            System.out.println("Selamat datang di aplikasi perpustakaan UB" + 
+                            "\n1. Memasukan Kategori, Buku, dan Penulisnya" +
+                            "\n2. Melihat isi Kategori yang telah dibuat" + 
+                            "\n3. Keluar Aplikasi");
+            masukan = input.nextInt();
+        } while (masukan != 3); 
+        
     }
 }
