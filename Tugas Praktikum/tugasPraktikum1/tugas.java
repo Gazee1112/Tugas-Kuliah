@@ -63,6 +63,7 @@ class Penulis{
 
     Penulis(){
     }
+
     Penulis(String nama){
         this.namaPenulis = nama;
     }
@@ -84,34 +85,45 @@ class tugas{
                          "\n3. Keluar Aplikasi");
         int pilih = input.nextInt();input.nextLine();
         
-        switch(pilih){
-            case 1 :
-                indek();
-                break;
-            case 2 :
-                break;
-            case 3 : 
-                System.out.println("Terimakasih telah menggunakan aplikasi perpustakaan UB");
-                break;
+        boolean kondisi = true;
+        while(kondisi){
+            switch(pilih){
+                case 1 :
+                    indek();
+                    break;
+                case 2 :
+                    cetak();
+                    break;
+                case 3 : 
+                    System.out.println("Terimakasih telah menggunakan aplikasi perpustakaan UB");
+                    break;
+            }
         }
     }
 
     public static void indek(){
         for (int i = 0; i < kategori.length; i++){
-            System.out.println("Masukan nama kategori ke-" + i + " : ");
+            System.out.println("Masukan nama kategori ke-" + (i + 1) + " : ");
             kategori[i] = new Kategori(input.nextLine());
-            Buku[] buku = new Buku[2];
-            for (int j = 0; j < buku.length; j++){
-                System.out.println("Masukan nama buku ke-" + j + " : ");
-                String nama = input.next();
-                System.out.println("Masukan sinopsis buku ke-" + j + " : ");
-                String penulis = input.next();
-                buku[j] = new Buku (nama,penulis);
-                Penulis penuliss[] = new Penulis [2];
-                for (int k = 0; k < penuliss.length; k++){
-                    penuliss[k] = new Penulis();
-                }
-            }
+            // Buku[] buku = new Buku[2];
+            // for (int j = 0; j < buku.length; j++){
+            //     System.out.println("Masukan nama buku ke-" + (j + 1) + " : ");
+            //     String nama = input.next();
+            //     System.out.println("Masukan sinopsis buku ke-" + (j + 1) + " : ");
+            //     String penulis = input.next();
+            //     buku[j] = new Buku (nama,penulis);
+            //     Penulis penuliss[] = new Penulis [2];
+            //     for (int k = 0; k < penuliss.length; k++){
+            //         penuliss[k] = new Penulis();
+            //     }
+            // }
+        }
+    }
+
+    public static void cetak(){
+        for (int i = 0; i < kategori.length; i++){
+            System.out.println("Kategori ke " + (i + 1) + "adalah : " + kategori[i].getBuku());  
+            
         }
     }
 }
