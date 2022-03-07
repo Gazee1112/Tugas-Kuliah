@@ -58,8 +58,8 @@ public class tugas {
     
     // Pembuatan Array kategori, Buku, Penulis
     public static c_Kategori kategori[] = new c_Kategori[3];
-    public static c_Buku buku[] = new c_Buku[6];
-    public static c_Penulis penulis[] = new c_Penulis[6];
+    public static c_Buku buku[] = new c_Buku[3];
+    public static c_Penulis penulis[] = new c_Penulis[3];
 
     public static void main(String[] args) {
         int pilih;
@@ -111,7 +111,8 @@ public class tugas {
 
     public static void print(){
         int x = 0; // untuk membantu dalam mengakses array buku sinopsis, dan penulis
-
+        System.out.println("");
+        
         for (int i = 0; i < kategori.length;i++){
             System.out.println("Kategori ke-" + (i + 1) + " adalah : " + kategori[i].getNamaK());  
             for (int j = 0; j < 2; j++){
