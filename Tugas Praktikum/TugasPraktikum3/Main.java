@@ -1,4 +1,7 @@
 import java.util.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 
 class perhitungan {
     public static int penjumlahan (int a, int b){
@@ -32,7 +35,6 @@ class produksi{
     public int getJaketC(){
         return this.jaketC;
     }
-
 }
 
 class Main{
@@ -78,7 +80,17 @@ class Main{
             System.out.println("Masukan Pilihan yang benar");
         }
         
-        System.out.printf("Harga Jaket : Rp. %,.2f", harga); 
-        System.out.println("");
+        harga = hitung.sederhana(harga);
+
+        //Pembuatan format kurs Indonesia
+        DecimalFormat kursIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRP = new DecimalFormatSymbols();
+
+        formatRP.setCurrencySymbol("Rp. ");
+        formatRP.setMonetaryDecimalSeparator(',');
+        formatRP.setGroupingSeparator('.');
+
+        kursIndo.setDecimalFormatSymbols(formatRP);
+        System.out.printf("Harga Jaket : %s %n",kursIndo.format(harga));
     }
 }
