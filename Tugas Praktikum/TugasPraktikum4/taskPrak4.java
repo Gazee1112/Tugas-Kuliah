@@ -38,9 +38,6 @@ class Manusia{
         }
         return jenisKelamin;
     }
-    public void setTunjangan (double tunjangan){
-        this.tunjangan += tunjangan;
-    }
     public double getTunjangan(){
         if (this.jenisKelamin == true && this.menikah == true){
             this.tunjangan += 25000;
@@ -65,15 +62,17 @@ class Manusia{
         return this.pendapatan + this.tunjangan + pendapatan;
     }
     public String toString(){
-        return "Nama            : " + nama 
-            +"\nNIK             : " + nik 
+        return "Nama            : " + this.nama 
+            +"\nNIK             : " + this.nik
             +"\nJenis Kelamin   : " + getJenisKelamin() 
-            +"\nPendapatan      : " + getPendapatan();
+            +"\nPendapatan      : " + getPendapatan()
+            +"\n====================================================";
     }
 }
 class Mahasiswa extends Manusia{
     private String nim;
     private double ipk;
+
     Mahasiswa (String nim, double ipk, String nama, String nik, boolean jenisKelamin, boolean menikah){
         super(nama,nik,jenisKelamin,menikah);
         this.nim = nim; 
@@ -115,7 +114,8 @@ class Mahasiswa extends Manusia{
             +"\nJenis Kelamin   : " + getJenisKelamin() 
             +"\nPendapatan      : " + getPendapatan() 
             +"\nNIM             : " + this.nim
-            +"\nStatus          : " + getStatus();
+            +"\nStatus          : " + getStatus()
+            +"\n====================================================";
     }
 }
 
@@ -130,13 +130,11 @@ class Dosen extends Manusia{
         this.tahunMasuk = tahunMasuk;
         this.jumlahAnak = jumlahAnak;
     }
-
     public int getLamaKerja(){
         int tahunSekarang = LocalDate.now().getYear();
         int LamaKerja = tahunSekarang - this.tahunMasuk.getYear();
         return LamaKerja;
     }
-
     public double getBonus(){
         double bonus = 0.0;
         if (getLamaKerja() > 10){
@@ -148,18 +146,16 @@ class Dosen extends Manusia{
         }
         return bonus;
     }
-
     public double getGaji(){
         return gaji;
     }
-
     public double getPendapatan(){
+        double tambTunjangan = 0;
         if (jumlahAnak > 0){
-            super.setTunjangan(jumlahAnak * 20000);
+            tambTunjangan = jumlahAnak*20_000;
         }
-        return super.getPendapatan() + getGaji() + getBonus();
+        return super.getPendapatan() + getGaji() + getBonus() + tambTunjangan;
     }
-
     public String toString(){
         return "Nama            : " + super.getNama()
             +"\nNik             : " + super.getNik()
@@ -169,9 +165,9 @@ class Dosen extends Manusia{
             +"\nLama Kerja      : " + getLamaKerja() + " tahun"
             +"\nStatus          : " + super.getMenikah()
             +"\nJumlah anak     : " + this.jumlahAnak
-            +"\nGaji            : " + getGaji();
+            +"\nGaji            : " + getGaji()
+            +"\n====================================================";
     }
-
 }
 class taskPrak4{
     public static void main(String[] args) {
@@ -182,11 +178,8 @@ class taskPrak4{
         var manusia3 = new Manusia("Dania", "1114", false, false);
         System.out.println("MANUSIA");
         System.out.println(manusia1);
-        System.out.println("====================================================");
         System.out.println(manusia2);
-        System.out.println("====================================================");
         System.out.println(manusia3);
-        System.out.println("====================================================");
         System.out.println("");
 
         //MAHASISWA
@@ -196,11 +189,8 @@ class taskPrak4{
         var mahasiswa3 = new Mahasiswa("215150700111045", 3.4, "Nisa", "1117", false, true);
         System.out.println("MAHASISWA");
         System.out.println(mahasiswa1);
-        System.out.println("====================================================");
         System.out.println(mahasiswa2);
-        System.out.println("====================================================");
         System.out.println(mahasiswa3);
-        System.out.println("====================================================");
         System.out.println("");
 
         //DOSEN
@@ -210,11 +200,8 @@ class taskPrak4{
         var dosen3 = new Dosen(3000_000, LocalDate.of(2003, 12, 11), 5, "Stefan", "1120", true, true);
         System.out.println("DOSEN");
         System.out.println(dosen1);
-        System.out.println("====================================================");
         System.out.println(dosen2);
-        System.out.println("====================================================");
         System.out.println(dosen3);
-        System.out.println("====================================================");
         System.out.println("");
         
     }
